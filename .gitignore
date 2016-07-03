@@ -1,0 +1,9 @@
+*
+!*/
+!*.*
+node_modules
+.idea
+test-data
+test-data-dev
+ozflux_serf
+~*

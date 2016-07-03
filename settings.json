@@ -1,0 +1,530 @@
+{
+  "app": {
+    "dev": true,
+    "port": 80,
+    "cronTime": "0 0,15,30,45 * * * *",
+    "dropboxDir": "/home/debian/Dropbox/OzFlux_Raw_Uploads/SERF/"
+  },
+  "dev": {
+    "port": 3000,
+    "cronTime": "0,10,20,30,40,50 * * * * *",
+    "dropboxDir": "/test-data/"
+  },
+  "tables": [{
+    "id": 0,
+    "name": "CR3000_slow_flux",
+    "file": "CR3000_slow_flux.dat",
+    "active": true,
+    "rows": [{
+      "name": "TIMESTAMP",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "RECORD",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "Fh_Avg",
+      "unit": "W/m^2",
+      "detail": "Calculated heat flux"
+    }, {
+      "name": "Fe_Avg",
+      "unit": "W/m^2",
+      "detail": ""
+    }, {
+      "name": "Fe_raw_Avg",
+      "unit": "W/m^2",
+      "detail": ""
+    }, {
+      "name": "Fc_Avg",
+      "unit": "mg/m^2/s",
+      "detail": ""
+    }, {
+      "name": "Fc_raw_Avg",
+      "unit": "mg/m^2/s",
+      "detail": ""
+    }, {
+      "name": "Fg_CN3_01_Avg",
+      "unit": "W/m^2",
+      "detail": "Middleton soil heat flux (1)"
+    }, {
+      "name": "Fg_CN3_02_Avg",
+      "unit": "W/m^2",
+      "detail": "Middleton soil heat flux (2)"
+    }, {
+      "name": "Fg_CN3_03_Avg",
+      "unit": "W/m^2",
+      "detail": "Middleton soil heat flux (3)"
+    }, {
+      "name": "Fm_Avg",
+      "unit": "kg/m/s^2",
+      "detail": ""
+    }, {
+      "name": "ustar_Avg",
+      "unit": "m/s",
+      "detail": "Calculated U*"
+    }, {
+      "name": "covUzUz",
+      "unit": "(m/s)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUzUx",
+      "unit": "(m/s)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUzUy",
+      "unit": "(m/s)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUzCc",
+      "unit": "mg/m^2/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUzAh",
+      "unit": "g/m^2/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUzTv",
+      "unit": "mC/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUxUx",
+      "unit": "(m/s)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUxUy",
+      "unit": "(m/s)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUxCc",
+      "unit": "mg/m^2/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUxAh",
+      "unit": "g/m^2/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUxTv",
+      "unit": "mC/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUyUy",
+      "unit": "(m/s)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUyCc",
+      "unit": "mg/m^2/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUyAh",
+      "unit": "g/m^2/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covUyTv",
+      "unit": "mC/s",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covCcCc",
+      "unit": "(mg/m^3)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covCcAh",
+      "unit": "mgg/m^6",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covCcTv",
+      "unit": "mgC/m^3",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covAhAh",
+      "unit": "(g/m^3)^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covAhTv",
+      "unit": "gC/m^3",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "covTvTv",
+      "unit": "C^2",
+      "detail": "Calculated covariances"
+    }, {
+      "name": "n_Tot",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "CSAT_Warn",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "DelT_CSAT_Tot",
+      "unit": "",
+      "detail": "CSAT diagnostics"
+    }, {
+      "name": "Track_CSAT_Tot",
+      "unit": "",
+      "detail": "CSAT diagnostics"
+    }, {
+      "name": "Amph_CSAT_Tot",
+      "unit": "",
+      "detail": "CSAT diagnostics"
+    }, {
+      "name": "Ampl_CSAT_Tot",
+      "unit": "",
+      "detail": "CSAT diagnostics"
+    }, {
+      "name": "7500_Warn",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "Chopper_7500_Tot",
+      "unit": "",
+      "detail": "Li-7500 diagnostics"
+    }, {
+      "name": "Detector_7500_Tot",
+      "unit": "",
+      "detail": "Li-7500 diagnostics"
+    }, {
+      "name": "Pll_7500_Tot",
+      "unit": "",
+      "detail": "Li-7500 diagnostics"
+    }, {
+      "name": "Sync_7500_Tot",
+      "unit": "",
+      "detail": "Li-7500 diagnostics"
+    }, {
+      "name": "AGC_7500_Avg",
+      "unit": "",
+      "detail": "Li-7500 diagnostics"
+    }]
+  }, {
+    "id": 1,
+    "name": "CR3000_slow_core",
+    "file": "CR3000_slow_core.dat",
+    "active": true,
+    "rows": [{
+      "name": "TIMESTAMP",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "RECORD",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "Fsd_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CM3 pyranometer incoming solar radiation"
+    }, {
+      "name": "Fsu_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CM3 pyranometer reflected solar radiation"
+    }, {
+      "name": "Fld_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CG3 pyrgeometer incoming FIR"
+    }, {
+      "name": "Flu_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CG3 pyrgeometer reflected FIR"
+    }, {
+      "name": "Fn_NRL_Avg",
+      "unit": "W/m^2",
+      "detail": "Zipp & Zonen NR-Lite net radiometer"
+    }, {
+      "name": "Fg_CN3_01_Avg",
+      "unit": "W/m^2",
+      "detail": "Middleton soil heat flux (1)"
+    }, {
+      "name": "Fh_Avg",
+      "unit": "W/m^2",
+      "detail": "Calculated heat flux"
+    }, {
+      "name": "Fe_raw_Avg",
+      "unit": "W/m^2",
+      "detail": ""
+    }, {
+      "name": "Fc_raw_Avg",
+      "unit": "mg/m^2/s",
+      "detail": ""
+    }, {
+      "name": "Fm_Avg",
+      "unit": "kg/m/s^2",
+      "detail": ""
+    }, {
+      "name": "Cc_7500_Avg",
+      "unit": "mg/m^3",
+      "detail": "Li-7500 CO2 concentration"
+    }, {
+      "name": "Ah_7500_Avg",
+      "unit": "g/m^3",
+      "detail": "Li-7500 H2O concentration"
+    }, {
+      "name": "ps_7500_Avg",
+      "unit": "kPa",
+      "detail": "Li-7500 air pressure"
+    }, {
+      "name": "Ux_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT wind speed (x)"
+    }, {
+      "name": "Uy_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT wind speed (y)"
+    }, {
+      "name": "Uz_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT wind speed (z)"
+    }, {
+      "name": "Tv_CSAT_Avg",
+      "unit": "C",
+      "detail": "CSAT sonic temperature"
+    }, {
+      "name": "Ta_HMP_01_Avg",
+      "unit": "C",
+      "detail": "HMP45 air temperature"
+    }, {
+      "name": "RH_HMP_01_Avg",
+      "unit": "fraction",
+      "detail": "HMP45 relative humidity"
+    }, {
+      "name": "Ts_TCAV_01_Avg",
+      "unit": "C",
+      "detail": "Averaging soil temperature (1)"
+    }, {
+      "name": "Sws_616_01_raw_Avg",
+      "unit": "ms",
+      "detail": "CS616 soil moisture (1)"
+    }, {
+      "name": "Rain_Tot",
+      "unit": "mm",
+      "detail": "Tipping bucket rain gauge"
+    }]
+  }, {
+    "id": 2,
+    "name": "CR3000_slow_met",
+    "file": "CR3000_slow_met.dat",
+    "active": true,
+    "rows": [{
+      "name": "TIMESTAMP",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "RECORD",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "Ux_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT wind speed (x)"
+    }, {
+      "name": "Uy_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT wind speed (y)"
+    }, {
+      "name": "Uz_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT wind speed (z)"
+    }, {
+      "name": "WS_CSAT_Avg",
+      "unit": "m/s",
+      "detail": "CSAT scalar wind speed"
+    }, {
+      "name": "WD_CSAT_Avg",
+      "unit": "degrees",
+      "detail": "CSAT wind direction (-180 to 180)"
+    }, {
+      "name": "WD_CSAT_Compass_Avg",
+      "unit": "degrees",
+      "detail": ""
+    }, {
+      "name": "WD_CSAT_Sd",
+      "unit": "degrees",
+      "detail": "CSAT wind direction standard deviation"
+    }, {
+      "name": "WS_WS4_Avg",
+      "unit": "m/s",
+      "detail": "WindSonic scalar wind speed"
+    }, {
+      "name": "WD_WS4_Avg",
+      "unit": "degrees",
+      "detail": "WindSonic wind direction (0 to 360)"
+    }, {
+      "name": "WD_WS4_Sd",
+      "unit": "degrees",
+      "detail": "WindSonic wind direction standard deviation"
+    }, {
+      "name": "Diag_WS4_Tot",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "Cc_7500_Avg",
+      "unit": "mg/m^3",
+      "detail": "Li-7500 CO2 concentration"
+    }, {
+      "name": "Ah_7500_Avg",
+      "unit": "g/m^3",
+      "detail": "Li-7500 H2O concentration"
+    }, {
+      "name": "ps_7500_Avg",
+      "unit": "kPa",
+      "detail": "Li-7500 air pressure"
+    }, {
+      "name": "Tv_CSAT_Avg",
+      "unit": "C",
+      "detail": ""
+    }, {
+      "name": "Ta_HMP_01_Avg",
+      "unit": "C",
+      "detail": "HMP45 air temperature"
+    }, {
+      "name": "RH_HMP_01_Avg",
+      "unit": "fraction",
+      "detail": "HMP45 relative humidity"
+    }, {
+      "name": "Ah_HMP_01_Avg",
+      "unit": "",
+      "detail": "Calculated HMP45 absolute humidity"
+    }, {
+      "name": "rho_a_Avg",
+      "unit": "kg/m^3",
+      "detail": "Calculated air density"
+    }, {
+      "name": "Ts_TCAV_01_Avg",
+      "unit": "C",
+      "detail": "Averaging soil temperature (1)"
+    }, {
+      "name": "Ts_TCAV_02_Avg",
+      "unit": "C",
+      "detail": "Averaging soil temperature (2)"
+    }, {
+      "name": "Ts_TCAV_03_Avg",
+      "unit": "C",
+      "detail": "Averaging soil temperature (3)"
+    }, {
+      "name": "Sws_616_01_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (1)"
+    }, {
+      "name": "Sws_616_02_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (2)"
+    }, {
+      "name": "Sws_616_03_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (3)"
+    }, {
+      "name": "Sws_616_04_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (4)"
+    }, {
+      "name": "Sws_616_05_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (5)"
+    }, {
+      "name": "Sws_616_06_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (6)"
+    }, {
+      "name": "Sws_616_07_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (7)"
+    }, {
+      "name": "Sws_616_08_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (8)"
+    }, {
+      "name": "Sws_616_09_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (9"
+    }, {
+      "name": "Sws_616_10_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (10)"
+    }, {
+      "name": "Sws_616_11_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (11)"
+    }, {
+      "name": "Sws_616_12_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (12)"
+    }, {
+      "name": "Sws_616_13_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (13)"
+    }, {
+      "name": "Sws_616_14_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (14)"
+    }, {
+      "name": "Sws_616_15_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (15)"
+    }, {
+      "name": "Sws_616_16_Avg",
+      "unit": "fraction",
+      "detail": "CS616 soil moisture (16)"
+    }, {
+      "name": "Rain_Tot",
+      "unit": "mm",
+      "detail": "Tipping bucket rain gauge"
+    }, {
+      "name": "Tpanel_Avg",
+      "unit": "C",
+      "detail": "CR3000 panel temperature"
+    }, {
+      "name": "Vbat_Avg",
+      "unit": "V",
+      "detail": "CR3000 supply voltage"
+    }]
+  }, {
+    "id": 3,
+    "name": "CR3000_slow_rad",
+    "file": "CR3000_slow_rad.dat",
+    "active": true,
+    "rows": [{
+      "name": "TIMESTAMP",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "RECORD",
+      "unit": "",
+      "detail": ""
+    }, {
+      "name": "Fsd_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CM3 pyranometer incoming solar radiation"
+    }, {
+      "name": "Fsu_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CM3 pyranometer reflected solar radiation"
+    }, {
+      "name": "Fld_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CG3 pyrgeometer incoming FIR"
+    }, {
+      "name": "Flu_CNR1_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CG3 pyrgeometer reflected FIR"
+    }, {
+      "name": "Fld_CNR1_raw_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CG3 pyrgeometer incoming FIR (uncorrected)"
+    }, {
+      "name": "Flu_CNR1_raw_Avg",
+      "unit": "W/m^2",
+      "detail": "Kipp & Zonen CNR1 CG3 pyrgeometer reflected FIR (uncorrected)"
+    }, {
+      "name": "Rs_CNR1_Avg",
+      "unit": "ohms",
+      "detail": "Kipp & Zonen CNR1 sensor resistance"
+    }, {
+      "name": "Fn_NRL_Avg",
+      "unit": "W/m^2",
+      "detail": "Zipp & Zonen NR-Lite net radiation"
+    }, {
+      "name": "Fn_CNR1",
+      "unit": "W/m^2",
+      "detail": "Calculated Kipp & Zonen CNR1 net radiation"
+    }]
+  }]
+}
