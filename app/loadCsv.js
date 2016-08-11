@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var csv = require('fast-csv');
+const log = require('./logger')();
 
 module.exports.lastLine = function(fileLocation, line) {
     return new Promise((resolve, reject) => {
@@ -14,11 +15,11 @@ module.exports.lastLine = function(fileLocation, line) {
             })
             .on("end", function (n) {
                 resolve(file[n - line]);
-            });
-        /*.on("error", (error) =>{
+            })
+        .on("error", (error) => {
                 log.error(error);
                 reject(new Error(error));
-            }
-        */
+            });
+
     });
 };

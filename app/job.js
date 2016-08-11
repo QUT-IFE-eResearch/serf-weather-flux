@@ -1,15 +1,17 @@
 'use strict';
 
 var CronJob = require('cron').CronJob;
-var waterfall = require('async-waterfall');
-const settings = require('../settings.json');
+var settings = require('../settings.json');
+var loadCsv = require('./loadCsv');
+var db = require('./db');
+var log = require('./logger')();
 
 module.exports.job = new CronJob({
-    cronTime: set.cronTime,
+    cronTime: settings.cronTime,
     onTick: function() {
         getLineAndInsert(1)
-            .then(()=>{
-                getLineAndInsert(2)
+            .then(() => {
+                getLineAndInsert(2);
         });
     },
     start: false,
@@ -19,7 +21,8 @@ module.exports.job = new CronJob({
 
 function getLineAndInsert(line){
     return new Promise((resolve, reject) => {
-        for(var i = 0; i < settings.tables.length; i++) {
+        //TODO: change for map or something!
+        settings.tables.map((table, i) => {
             loadCsv.lastLine(settings.dropboxDir + settings.tables[i].file, line, function (lastRow) {
                 db.insertRow(settings.tables[i].name, lastRow, lastRow[1], function (err) {
                     if (err) {
@@ -30,6 +33,6 @@ function getLineAndInsert(line){
                     }
                 });
             });
-        }
+        });
     });
 }

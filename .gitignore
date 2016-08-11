@@ -3,7 +3,9 @@
 !*.*
 node_modules
 .idea
+.DS_Store
 test-data
 test-data-dev
 ozflux_serf
+logs
 ~*

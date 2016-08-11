@@ -1,15 +1,9 @@
 {
-  "app": {
-    "dev": true,
-    "port": 80,
-    "cronTime": "0 0,15,30,45 * * * *",
-    "dropboxDir": "/home/debian/Dropbox/OzFlux_Raw_Uploads/SERF/"
-  },
-  "dev": {
-    "port": 3000,
-    "cronTime": "0,10,20,30,40,50 * * * * *",
-    "dropboxDir": "/test-data/"
-  },
+  "logFile": "/Users/Moy/NodeJSProjects/fluxweather/logs/log.out",
+  "port": 3000,
+  "cronTime": "0 0,15,30,45 * * * *",
+  "dropboxDir": "/Users/Moy/NodeJSProjects/fluxweather/test-data/",
+  "sqliteDB": "/Users/Moy/NodeJSProjects/fluxweather/db/ozflux_serf",
   "tables": [{
     "id": 0,
     "name": "CR3000_slow_flux",

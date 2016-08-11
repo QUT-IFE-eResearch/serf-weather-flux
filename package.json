@@ -1,12 +1,13 @@
 {
   "name": "fluxweather",
   "version": "1.0.0",
-  "description": "Flux Weather",
+  "description": "SERF Flux Weather",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node api/index.js",
+    "dev": "gulp"
   },
-  "start": "node index",
   "keywords": [
     "Flux",
     "Weather"
@@ -15,9 +16,18 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cron": "^1.1.0",
     "express": "^4.14.0",
+    "fast-csv": "^2.1.0",
     "log4js": "^0.6.37",
     "sqlite3": "^3.1.4",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-nodemon": "^2.1.0",
+    "jshint-stylish": "^2.2.0"
   }
 }
