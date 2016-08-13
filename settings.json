@@ -1,9 +1,9 @@
 {
-  "logFile": "/Users/Moy/NodeJSProjects/fluxweather/logs/log.out",
+  "logFile": "/Users/Moy/NodeJSProjects/serf-weather-flux/logs/log.out",
   "port": 3000,
   "cronTime": "0 0,15,30,45 * * * *",
-  "dropboxDir": "/Users/Moy/NodeJSProjects/fluxweather/test-data/",
-  "sqliteDB": "/Users/Moy/NodeJSProjects/fluxweather/db/ozflux_serf",
+  "dropboxDir": "/Users/Moy/NodeJSProjects/serf-weather-flux/test-data/",
+  "sqliteDB": "/Users/Moy/NodeJSProjects/serf-weather-flux/db/ozflux_serf",
   "tables": [{
     "id": 0,
     "name": "CR3000_slow_flux",

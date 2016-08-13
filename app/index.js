@@ -28,13 +28,14 @@ app.get('/flux/:table/:opts', (req, res) => {
     var opts = req.params.opts.split('.');
     var row = {};
     db.getLastPoint(req.params.table, 'RECORD')
-        .then((lastRow) =>{
+        .then((lastRow) => {
             row = lastRow;
             return db.getRowsBetween(req.params.table, opts, 'RECORD', row.RECORD - 100, row.RECORD);
         })
         .then((rows) => {
             res.status(200).send({
-                rows: rows,
+                rows: rows.xyed,
+                mnmx: rows.mnmx,
                 first: row.RECORD - 100,
                 last: row.RECORD,
                 lastInsert: row.RECORD

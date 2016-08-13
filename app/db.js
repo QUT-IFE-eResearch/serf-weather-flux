@@ -3,6 +3,7 @@
 var sqlite3 = require('sqlite3').verbose();
 var settings = require('../settings.json');
 var db = new sqlite3.Database(settings.sqliteDB);
+var GetMinMax = require('./utils/GetMinMax');
 
 module.exports.getRows = (last, table, order) => {
     return new Promise((resolve, reject) => {
@@ -32,7 +33,13 @@ module.exports.getRowsBetween = (table, columns, between, betweenFirst, betweenL
             if(err){
                 reject(new Error(err));
             }else {
-                resolve(rows);
+
+                //XY transform
+                var xyed = rows.map((row) => {
+                    return {x: row[columns[0]], y: row[columns[1]]}
+                });
+                var mnmx = GetMinMax(xyed);
+                resolve({xyed: xyed, mnmx: mnmx});
             }
         });
     });
