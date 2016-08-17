@@ -6,6 +6,7 @@ const log = require('./logger')();
 const settings = require('../settings.json');
 const job = require('./job');
 const db = require('./db');
+const _ = require('underscore');
 
 let allowCrossDomain = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -45,6 +46,21 @@ app.get('/flux/:table/:opts', (req, res) => {
             res.status(404).send({
                 error:error.message
             });
+            log.error(new Error(error));
+        });
+});
+
+app.get('/pragma/:table', function(req, res){
+    var table = _.findWhere(settings.tables, {name: req.params.table});
+    db.getPragma(table.name)
+        .then(function (rows) {
+            res.status(200).send({
+                rows: rows,
+                rowDefs: table.rows
+            });
+        })
+        .catch(function(error){
+            res.status(400).send({rows:{},rowsDefs:{}});
             log.error(new Error(error));
         });
 });
