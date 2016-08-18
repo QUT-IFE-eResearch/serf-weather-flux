@@ -1,6 +1,8 @@
 {
+  "static": "/Users/Moy/ReactProjects/serf-weather-dashboard/dist",
   "logFile": "/Users/Moy/NodeJSProjects/serf-weather-flux/logs/log.out",
   "port": 3000,
+  "startJob": false,
   "cronTime": "0 0,15,30,45 * * * *",
   "dropboxDir": "/Users/Moy/NodeJSProjects/serf-weather-flux/test-data/",
   "sqliteDB": "/Users/Moy/NodeJSProjects/serf-weather-flux/db/ozflux_serf",

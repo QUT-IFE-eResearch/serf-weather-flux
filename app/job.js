@@ -18,7 +18,6 @@ module.exports.job = new CronJob({
     timeZone: 'Australia/Brisbane'
 });
 
-
 function getLineAndInsert(line){
     return new Promise((resolve, reject) => {
         //TODO: change for map or something!

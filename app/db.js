@@ -49,6 +49,7 @@ module.exports.getLastPoint = (table, column) => {
     return new Promise((resolve, reject) => {
         db.each('SELECT '+ column + ' FROM ' + table + ' ORDER BY ' + column + ' DESC LIMIT 1', (err, row) => {
             if(err){
+                
                 reject(new Error(err));
             }else {
                 resolve(row);

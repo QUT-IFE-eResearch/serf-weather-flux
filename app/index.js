@@ -7,6 +7,7 @@ const settings = require('../settings.json');
 const job = require('./job');
 const db = require('./db');
 const _ = require('underscore');
+const moment = require('moment');
 
 let allowCrossDomain = (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -20,6 +21,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(allowCrossDomain);
+app.use('/static', express.static(settings.static));
 
 app.get('/', (req, res) => {
     res.status(200).json('Hi');
@@ -53,14 +55,36 @@ app.get('/flux/:table/:opts', (req, res) => {
 app.get('/pragma/:table', function(req, res){
     var table = _.findWhere(settings.tables, {name: req.params.table});
     db.getPragma(table.name)
-        .then(function (rows) {
+        .then( (rows) => {
             res.status(200).send({
                 rows: rows,
                 rowDefs: table.rows
             });
         })
-        .catch(function(error){
+        .catch( (error) => {
             res.status(400).send({rows:{},rowsDefs:{}});
+            log.error(new Error(error));
+        });
+});
+
+app.get('/lastday/:table', function(req, res){
+    db.getLastPoint(req.params.table, 'TIMESTAMP')
+        .then( (row) => {
+            var timestamp = row.TIMESTAMP.trim();
+            var current = moment(timestamp).format("YYYY-MM-DD HH:MM:SS");
+            var today = moment(new Date());
+            var diff = today.diff(current, 'days');
+            var result = '';
+            if(diff > 1){
+                result = 'Last day updated ' + diff + ' days ago on ' + current;
+            }else{
+                result = 'OK';
+            }
+            res.status(200).send(result);
+        })
+        .catch( (err) => {
+            console.log(Date() + " " + err);
+            res.status(400).send(err);
             log.error(new Error(error));
         });
 });
@@ -69,4 +93,7 @@ var server = app.listen(process.env.PORT || settings.port, () => {
     log.info('Api listening on ', server.address().port);
 });
 
-//job.start();
+
+if(settings.startJob) {
+    job.start();
+}
