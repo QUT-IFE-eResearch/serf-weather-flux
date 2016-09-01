@@ -21,10 +21,10 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(allowCrossDomain);
-app.use('/static', express.static(settings.static));
+app.use('/app', express.static(settings.static));
 
 app.get('/', (req, res) => {
-    res.status(200).json('Hi');
+    res.redirect('/app');
 });
 
 app.get('/flux/:table/:opts', (req, res) => {
@@ -85,8 +85,18 @@ app.get('/lastday/:table', function(req, res){
         .catch( (err) => {
             console.log(Date() + " " + err);
             res.status(400).send(err);
-            log.error(new Error(error));
+            log.error(new Error(err));
         });
+});
+
+app.get('/summary', function (req, res) {
+    var summary = require('./summary');
+    summary().then((response)=>{
+        res.status(200).send(response);
+    }).catch((error)=>{
+        res.status(400).send(error.message);
+        log.error(new Error(error));
+    });
 });
 
 var server = app.listen(process.env.PORT || settings.port, () => {

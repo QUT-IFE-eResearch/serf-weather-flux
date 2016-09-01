@@ -49,7 +49,6 @@ module.exports.getLastPoint = (table, column) => {
     return new Promise((resolve, reject) => {
         db.each('SELECT '+ column + ' FROM ' + table + ' ORDER BY ' + column + ' DESC LIMIT 1', (err, row) => {
             if(err){
-                
                 reject(new Error(err));
             }else {
                 resolve(row);
@@ -92,6 +91,42 @@ module.exports.getTables = () => {
                 reject(err);
             } else {
                 resolve(rows);
+            }
+        });
+    });
+};
+
+module.exports.getMax = (table, column1, column2, day) => {
+    return new Promise((resolve, reject) => {
+        db.each(`SELECT max(${column1}) as max FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
+            if(err){
+                reject(new Error(err));
+            }else {
+                resolve(row);
+            }
+        });
+    });
+};
+
+module.exports.getMin = (table, column1, column2, day) => {
+    return new Promise((resolve, reject) => {
+        db.each(`SELECT min(${column1}) as min FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
+            if(err){
+                reject(new Error(err));
+            }else {
+                resolve(row);
+            }
+        });
+    });
+};
+
+module.exports.getSum = (table, column1, column2, day) => {
+    return new Promise((resolve, reject) => {
+        db.each(`SELECT sum(${column1}) as sum FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
+            if(err){
+                reject(new Error(err));
+            }else {
+                resolve(row);
             }
         });
     });
