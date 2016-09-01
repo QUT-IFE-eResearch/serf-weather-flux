@@ -7,6 +7,9 @@ var moment = require('moment');
 function myParse(value) {
     return parseFloat(value).toFixed(2);
 }
+function formatDate(date) {
+    return moment(date).format('DD-MM-YYYY HH:mm:ss')
+}
 module.exports = function () {
     //This function will return current and highLow weather data
     var today = moment().format('YYYY-MM-DD');
@@ -30,7 +33,7 @@ module.exports = function () {
         db.getSum('CR3000_slow_met','TIMESTAMP','Rain_Tot', today)
 
     ]).then((res) => {
-        var d = res[0].TIMESTAMP;
+        var d = formatDate(res[0].TIMESTAMP);
         var t = myParse(res[1].Ta_HMP_01_Avg);
         var h = myParse(res[2].RH_HMP_01_Avg) * 100;
         var b = myParse(res[3].ps_7500_Avg);
