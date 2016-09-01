@@ -22,7 +22,7 @@ describe('Get Max from DB', function () {
 describe('Get SUM from DB', function () {
     it('get Sum', function (done) {
         db
-            .getSum('CR3000_slow_met', 'Rain_Tot', 'TIMESTAMP', '2013-10-28')
+            .getSum('CR3000_slow_met', 'TIMESTAMP', 'Rain_Tot', '2013-10-28')
             .then((res)=>{
                 assert.equal(res.sum, 0);
                 done();
