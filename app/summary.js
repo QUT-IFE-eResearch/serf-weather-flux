@@ -35,19 +35,19 @@ module.exports = function () {
     ]).then((res) => {
         var d = formatDate(res[0].TIMESTAMP);
         var t = myParse(res[1].Ta_HMP_01_Avg);
-        var h = myParse(res[2].RH_HMP_01_Avg) * 100;
+        var h = myParse(res[2].RH_HMP_01_Avg * 100);
         var b = myParse(res[3].ps_7500_Avg);
-        var w = myParse(res[4].WS_WS4_AVg);
+        var w = myParse(res[4].WS_WS4_Avg);
         var wd = cardinal(res[5].WD_WS4_Avg);
         var r = myParse(res[6].Rain_Tot);
 
         var tMax = myParse(res[7].max);
-        var hMax = myParse(res[8].max)* 100;
+        var hMax = myParse(res[8].max * 100);
         var bMax = myParse(res[9].max);
         var wMax = myParse(res[10].max);
 
         var tMin = myParse(res[11].min);
-        var hMin = myParse(res[12].min)* 100;
+        var hMin = myParse(res[12].min * 100);
         var bMin = myParse(res[13].min);
         var wMin = myParse(res[14].min);
 
