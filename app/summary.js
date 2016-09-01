@@ -15,13 +15,13 @@ module.exports = function () {
     var today = moment().format('YYYY-MM-DD');
 
     return Promise.all([
-        db.getLastPoint('CR3000_slow_met','TIMESTAMP'),
-        db.getLastPoint('CR3000_slow_met','Ta_HMP_01_Avg'),
-        db.getLastPoint('CR3000_slow_met','RH_HMP_01_Avg'),
-        db.getLastPoint('CR3000_slow_met','ps_7500_Avg'),
-        db.getLastPoint('CR3000_slow_met','WS_WS4_AVg'),
-        db.getLastPoint('CR3000_slow_met','WD_WS4_Avg'),
-        db.getLastPoint('CR3000_slow_met','Rain_Tot'),
+        db.getLastTimeStamp('CR3000_slow_met','TIMESTAMP'),
+        db.getLastTimeStamp('CR3000_slow_met','Ta_HMP_01_Avg'),
+        db.getLastTimeStamp('CR3000_slow_met','RH_HMP_01_Avg'),
+        db.getLastTimeStamp('CR3000_slow_met','ps_7500_Avg'),
+        db.getLastTimeStamp('CR3000_slow_met','WS_WS4_AVg'),
+        db.getLastTimeStamp('CR3000_slow_met','WD_WS4_Avg'),
+        db.getLastTimeStamp('CR3000_slow_met','Rain_Tot'),
         db.getMax('CR3000_slow_met','TIMESTAMP','Ta_HMP_01_Avg', today),
         db.getMax('CR3000_slow_met','TIMESTAMP','RH_HMP_01_Avg', today),
         db.getMax('CR3000_slow_met','TIMESTAMP','ps_7500_Avg', today),

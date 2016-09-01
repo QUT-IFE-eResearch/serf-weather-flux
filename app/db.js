@@ -47,6 +47,7 @@ module.exports.getRowsBetween = (table, columns, between, betweenFirst, betweenL
 
 module.exports.getLastPoint = (table, column) => {
     return new Promise((resolve, reject) => {
+        //console.log('SELECT '+ column + ' FROM ' + table + ' ORDER BY ' + column + ' DESC LIMIT 1');
         db.each('SELECT '+ column + ' FROM ' + table + ' ORDER BY ' + column + ' DESC LIMIT 1', (err, row) => {
             if(err){
                 reject(new Error(err));
@@ -91,6 +92,19 @@ module.exports.getTables = () => {
                 reject(err);
             } else {
                 resolve(rows);
+            }
+        });
+    });
+};
+
+module.exports.getLastTimeStamp = (table, column) => {
+    return new Promise((resolve, reject) => {
+        //console.log('SELECT '+ column + ' FROM ' + table + ' ORDER BY TIMESTAMP DESC LIMIT 1');
+        db.each('SELECT '+ column + ' FROM ' + table + ' ORDER BY TIMESTAMP DESC LIMIT 1', (err, row) => {
+            if(err){
+                reject(new Error(err));
+            }else {
+                resolve(row);
             }
         });
     });
