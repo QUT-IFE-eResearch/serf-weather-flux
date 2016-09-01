@@ -122,7 +122,8 @@ module.exports.getMin = (table, column1, column2, day) => {
 
 module.exports.getSum = (table, column1, column2, day) => {
     return new Promise((resolve, reject) => {
-        db.each(`SELECT sum(${column1}) as sum FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
+        console.log(`SELECT sum(${column2}) as sum FROM ${table}  WHERE ${column1} LIKE '${day}%'`);
+        db.each(`SELECT sum(${column2}) as sum FROM ${table}  WHERE ${column1} LIKE '${day}%'`, (err, row) => {
             if(err){
                 reject(new Error(err));
             }else {

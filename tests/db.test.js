@@ -24,7 +24,7 @@ describe('Get SUM from DB', function () {
         db
             .getSum('CR3000_slow_met', 'Rain_Tot', 'TIMESTAMP', '2013-10-28')
             .then((res)=>{
-                assert.equal(res.sum, '0');
+                assert.equal(res.sum, 0);
                 done();
             })
             .catch((err)=>{
