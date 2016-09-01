@@ -15,22 +15,22 @@ module.exports = function () {
     var today = moment().format('YYYY-MM-DD');
 
     return Promise.all([
-        db.getLastTimeStamp('CR3000_slow_met','TIMESTAMP'),
-        db.getLastTimeStamp('CR3000_slow_met','Ta_HMP_01_Avg'),
-        db.getLastTimeStamp('CR3000_slow_met','RH_HMP_01_Avg'),
-        db.getLastTimeStamp('CR3000_slow_met','ps_7500_Avg'),
-        db.getLastTimeStamp('CR3000_slow_met','WS_WS4_AVg'),
-        db.getLastTimeStamp('CR3000_slow_met','WD_WS4_Avg'),
-        db.getLastTimeStamp('CR3000_slow_met','Rain_Tot'),
-        db.getMax('CR3000_slow_met','Ta_HMP_01_Avg','TIMESTAMP', today),
-        db.getMax('CR3000_slow_met','RH_HMP_01_Avg','TIMESTAMP', today),
-        db.getMax('CR3000_slow_met','ps_7500_Avg','TIMESTAMP', today),
-        db.getMax('CR3000_slow_met','WS_WS4_AVg','TIMESTAMP', today),
-        db.getMin('CR3000_slow_met','Ta_HMP_01_Avg','TIMESTAMP', today),
-        db.getMin('CR3000_slow_met','RH_HMP_01_Avg','TIMESTAMP', today),
-        db.getMin('CR3000_slow_met','ps_7500_Avg','TIMESTAMP', today),
-        db.getMin('CR3000_slow_met','WS_WS4_AVg','TIMESTAMP', today),
-        db.getSum('CR3000_slow_met','Rain_Tot','TIMESTAMP', today)
+        db.getLastTimeStamp('CR3000_slow_met','TIMESTAMP'), //0,d
+        db.getLastTimeStamp('CR3000_slow_met','Ta_HMP_01_Avg'),//1,t
+        db.getLastTimeStamp('CR3000_slow_met','RH_HMP_01_Avg'),//2,h
+        db.getLastTimeStamp('CR3000_slow_met','ps_7500_Avg'),//3,b
+        db.getLastTimeStamp('CR3000_slow_met','WS_WS4_Avg'),//4,w
+        db.getLastTimeStamp('CR3000_slow_met','WD_WS4_Avg'),//5,wd
+        db.getLastTimeStamp('CR3000_slow_met','Rain_Tot'),//6,r
+        db.getMax('CR3000_slow_met','Ta_HMP_01_Avg','TIMESTAMP', today),//7,tMax
+        db.getMax('CR3000_slow_met','RH_HMP_01_Avg','TIMESTAMP', today),//8,hMax
+        db.getMax('CR3000_slow_met','ps_7500_Avg','TIMESTAMP', today),//9,bMax
+        db.getMax('CR3000_slow_met','WS_WS4_Avg','TIMESTAMP', today),//10,wMax
+        db.getMin('CR3000_slow_met','Ta_HMP_01_Avg','TIMESTAMP', today),//11,tMin
+        db.getMin('CR3000_slow_met','RH_HMP_01_Avg','TIMESTAMP', today),//12,hMin
+        db.getMin('CR3000_slow_met','ps_7500_Avg','TIMESTAMP', today),//13,bMin
+        db.getMin('CR3000_slow_met','WS_WS4_Avg','TIMESTAMP', today),//14,wMin
+        db.getSum('CR3000_slow_met','Rain_Tot','TIMESTAMP', today)//15,rSum
 
     ]).then((res) => {
         var d = formatDate(res[0].TIMESTAMP);

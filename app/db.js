@@ -112,8 +112,8 @@ module.exports.getLastTimeStamp = (table, column) => {
 
 module.exports.getMax = (table, column1, column2, day) => {
     return new Promise((resolve, reject) => {
-        //console.log(`SELECT max(${column1}) as max FROM ${table}  WHERE ${column2} LIKE '${day}%'`)
-        db.each(`SELECT max(${column1}) as max FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
+        //console.log(`SELECT max(CAST(${column1} AS NUMERIC)) as max FROM ${table}  WHERE ${column2} LIKE '${day}%'`)
+        db.each(`SELECT max(CAST(${column1} AS NUMERIC)) as max FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
             if(err){
                 reject(new Error(err));
             }else {
@@ -125,8 +125,8 @@ module.exports.getMax = (table, column1, column2, day) => {
 
 module.exports.getMin = (table, column1, column2, day) => {
     return new Promise((resolve, reject) => {
-        //console.log(`SELECT min(${column1}) as min FROM ${table}  WHERE ${column2} LIKE '${day}%'`);
-        db.each(`SELECT min(${column1}) as min FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
+        //console.log(`SELECT min(CAST(${column1} AS NUMERIC)) as min FROM ${table}  WHERE ${column2} LIKE '${day}%'`);
+        db.each(`SELECT min(CAST(${column1} AS NUMERIC)) as min FROM ${table}  WHERE ${column2} LIKE '${day}%'`, (err, row) => {
             if(err){
                 reject(new Error(err));
             }else {
