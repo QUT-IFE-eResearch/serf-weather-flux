@@ -22,15 +22,15 @@ module.exports = function () {
         db.getLastTimeStamp('CR3000_slow_met','WS_WS4_AVg'),
         db.getLastTimeStamp('CR3000_slow_met','WD_WS4_Avg'),
         db.getLastTimeStamp('CR3000_slow_met','Rain_Tot'),
-        db.getMax('CR3000_slow_met','TIMESTAMP','Ta_HMP_01_Avg', today),
-        db.getMax('CR3000_slow_met','TIMESTAMP','RH_HMP_01_Avg', today),
-        db.getMax('CR3000_slow_met','TIMESTAMP','ps_7500_Avg', today),
-        db.getMax('CR3000_slow_met','TIMESTAMP','WS_WS4_AVg', today),
-        db.getMin('CR3000_slow_met','TIMESTAMP','Ta_HMP_01_Avg', today),
-        db.getMin('CR3000_slow_met','TIMESTAMP','RH_HMP_01_Avg', today),
-        db.getMin('CR3000_slow_met','TIMESTAMP','ps_7500_Avg', today),
-        db.getMin('CR3000_slow_met','TIMESTAMP','WS_WS4_AVg', today),
-        db.getSum('CR3000_slow_met','TIMESTAMP','Rain_Tot', today)
+        db.getMax('CR3000_slow_met','Ta_HMP_01_Avg','TIMESTAMP', today),
+        db.getMax('CR3000_slow_met','RH_HMP_01_Avg','TIMESTAMP', today),
+        db.getMax('CR3000_slow_met','ps_7500_Avg','TIMESTAMP', today),
+        db.getMax('CR3000_slow_met','WS_WS4_AVg','TIMESTAMP', today),
+        db.getMin('CR3000_slow_met','Ta_HMP_01_Avg','TIMESTAMP', today),
+        db.getMin('CR3000_slow_met','RH_HMP_01_Avg','TIMESTAMP', today),
+        db.getMin('CR3000_slow_met','ps_7500_Avg','TIMESTAMP', today),
+        db.getMin('CR3000_slow_met','WS_WS4_AVg','TIMESTAMP', today),
+        db.getSum('CR3000_slow_met','Rain_Tot','TIMESTAMP', today)
 
     ]).then((res) => {
         var d = formatDate(res[0].TIMESTAMP);
@@ -42,12 +42,12 @@ module.exports = function () {
         var r = myParse(res[6].Rain_Tot);
 
         var tMax = myParse(res[7].max);
-        var hMax = myParse(res[8].max);
+        var hMax = myParse(res[8].max)* 100;
         var bMax = myParse(res[9].max);
         var wMax = myParse(res[10].max);
 
         var tMin = myParse(res[11].min);
-        var hMin = myParse(res[12].min);
+        var hMin = myParse(res[12].min)* 100;
         var bMin = myParse(res[13].min);
         var wMin = myParse(res[14].min);
 
