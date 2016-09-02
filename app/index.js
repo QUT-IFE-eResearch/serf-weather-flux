@@ -52,6 +52,31 @@ app.get('/flux/:table/:opts', (req, res) => {
         });
 });
 
+app.get('/flux2/:table/:opts', (req, res) => {
+    var opts = req.params.opts.split('.');
+    var row = {};
+    db.getLastPoint(req.params.table, 'RECORD')
+        .then((lastRow) => {
+            row = lastRow;
+            return db.getRowsBetween2(req.params.table, opts, 'RECORD', row.RECORD - 100, row.RECORD);
+        })
+        .then((rows) => {
+            res.status(200).send({
+                rows: rows.xyed,
+                mnmx: rows.mnmx,
+                first: row.RECORD - 100,
+                last: row.RECORD,
+                lastInsert: row.RECORD
+            });
+        })
+        .catch((error) => {
+            res.status(404).send({
+                error:error.message
+            });
+            log.error(new Error(error));
+        });
+});
+
 app.get('/pragma/:table', function(req, res){
     var table = _.findWhere(settings.tables, {name: req.params.table});
     db.getPragma(table.name)

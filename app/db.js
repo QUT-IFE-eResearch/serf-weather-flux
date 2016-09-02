@@ -4,6 +4,7 @@ var sqlite3 = require('sqlite3').verbose();
 var settings = require('../settings.json');
 var db = new sqlite3.Database(settings.sqliteDB);
 var GetMinMax = require('./utils/GetMinMax');
+var date2Unix = require('./utils/date2Unix');
 
 module.exports.getRows = (last, table, order) => {
     return new Promise((resolve, reject) => {
@@ -33,7 +34,6 @@ module.exports.getRowsBetween = (table, columns, between, betweenFirst, betweenL
             if(err){
                 reject(new Error(err));
             }else {
-
                 //XY transform
                 var xyed = rows.map((row) => {
                     return {x: row[columns[0]], y: row[columns[1]]}
@@ -44,7 +44,22 @@ module.exports.getRowsBetween = (table, columns, between, betweenFirst, betweenL
         });
     });
 };
-
+module.exports.getRowsBetween2 = (table, columns, between, betweenFirst, betweenLast) => {
+    return new Promise((resolve, reject) => {
+        db.all('SELECT ' + columns + ' FROM ' + table + ' WHERE '+ between +' BETWEEN ' + betweenFirst + ' AND ' + betweenLast +' ', (err, rows) => {
+            if(err){
+                reject(new Error(err));
+            }else {
+                //XY transform
+                var xyed = rows.map((row) => {
+                    return {x: date2Unix(row[columns[0]]), y: parseFloat(row[columns[1]])}
+                });
+                var mnmx = GetMinMax(xyed);
+                resolve({xyed: xyed, mnmx: mnmx});
+            }
+        });
+    });
+};
 module.exports.getLastPoint = (table, column) => {
     return new Promise((resolve, reject) => {
         //console.log('SELECT '+ column + ' FROM ' + table + ' ORDER BY ' + column + ' DESC LIMIT 1');

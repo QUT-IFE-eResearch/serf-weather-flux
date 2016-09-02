@@ -8,7 +8,7 @@ function myParse(value) {
     return parseFloat(value).toFixed(2);
 }
 function formatDate(date) {
-    return moment(date).format('DD-MM-YYYY HH:mm:ss')
+    return moment(date).format('DD-MM-YYYY HH:mm:ss');
 }
 module.exports = function () {
     //This function will return current and highLow weather data
@@ -33,6 +33,7 @@ module.exports = function () {
         db.getSum('CR3000_slow_met','Rain_Tot','TIMESTAMP', today)//15,rSum
 
     ]).then((res) => {
+
         var d = formatDate(res[0].TIMESTAMP);
         var t = myParse(res[1].Ta_HMP_01_Avg);
         var h = myParse(res[2].RH_HMP_01_Avg * 100);
@@ -43,7 +44,7 @@ module.exports = function () {
 
         var tMax = myParse(res[7].max);
         var hMax = myParse(res[8].max * 100);
-        var bMax = myParse(res[9].max);
+        var bMax = myParse(res[9].max );
         var wMax = myParse(res[10].max);
 
         var tMin = myParse(res[11].min);
@@ -60,10 +61,10 @@ module.exports = function () {
                 {name: 'Humidity', value: h, unit: '%', max: 100, isMeter: true},
                 {name: 'Barometer', value: b, unit: 'ps', max: 1070, isMeter: true},
                 {name: 'Rain', value: r, unit: 'mm', max: 100, isMeter: true},
-                {name: 'Wind', value: w, unit: 'km/hr', max: 100, isMeter: false},
-                {name: 'Wind Direction', value: wd, unit: '', max: 100, isMeter: false}
+                {name: 'Wind', value: w, unit: 'km/hr', max: 30, isMeter: false},
+                {name: 'Wind Direction', value: wd, unit: '', max: 30, isMeter: false}
             ],
-            wind: {name: 'Wind', value: w, unit: 'km/hr', direction: wd, max: 100},
+            wind: {name: 'Wind', value: w, unit: 'km/hr', direction: wd, max: 30},
             highLow: [
                 {name: 'Temperature', value: tMax, unit: '°C', highlow: 1},
                 {name: '', value: tMin, unit: '°C', highlow: 2},
