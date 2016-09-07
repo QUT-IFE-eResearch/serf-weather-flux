@@ -59,7 +59,7 @@ module.exports = function () {
             current: [
                 {name: 'Temperature', value: t, unit: '°C', max: 60, isMeter: true},
                 {name: 'Humidity', value: h, unit: '%', max: 100, isMeter: true},
-                {name: 'Barometer', value: b, unit: 'ps', max: 1070, isMeter: true},
+                {name: 'Barometer', value: b, unit: 'kPa', min:97, max: 107, isMeter: true},
                 {name: 'Rain', value: r, unit: 'mm', max: 100, isMeter: true},
                 {name: 'Wind', value: w, unit: 'km/hr', max: 30, isMeter: false},
                 {name: 'Wind Direction', value: wd, unit: '', max: 30, isMeter: false}
@@ -70,8 +70,8 @@ module.exports = function () {
                 {name: '', value: tMin, unit: '°C', highlow: 2},
                 {name: 'Humidity', value: hMax, unit: '%', highlow: 1},
                 {name: '', value: hMin, unit: '%', highlow: 2},
-                {name: 'Barometer', value: bMax, unit: 'ps', highlow: 1},
-                {name: '', value: bMin, unit: 'ps', highlow: 2},
+                {name: 'Barometer', value: bMax, unit: 'kPa', highlow: 1},
+                {name: '', value: bMin, unit: 'kPa', highlow: 2},
                 {name: 'Wind', value: wMax, unit: 'km/hr', highlow: 1},
                 {name: '', value: wMin, unit: 'km/hr', highlow: 2},
                 {name: 'Today\'s Rain', value: rSum, unit: 'mm'}
