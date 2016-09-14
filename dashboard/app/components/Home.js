@@ -5,7 +5,6 @@ var Weather = require('../utils/Weather');
 
 var MainContainer = require('./MainContainer');
 var Pragma = require('./Pragma');
-var settings = require('../settings');
 var DataPanel = require('./DataPanel');
 var MeterPanel = require('./MeterPanel');
 var WindGauge = require('./WindGauge');

@@ -12,6 +12,7 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     devtool: 'source-map',
     entry: [
+        './settings',
         'whatwg-fetch',
         './app/index.js'
     ],
@@ -27,7 +28,8 @@ module.exports = {
             { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file"},
             { test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+            { test: require.resolve('./settings-dev'), loader: "expose?Settings" }
         ]
     },
     plugins: [
