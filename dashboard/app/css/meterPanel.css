@@ -1,0 +1,32 @@
+.meter-panel{
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    height: 70vh;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.meter {
+    display: flex;
+    margin: 1em;
+    background-color: #CCCCCC;
+    max-height: 300px;
+    min-width: 120px;
+    box-shadow: 0 2px 5px 1px #AAAAAA;
+    padding: 0;
+    border-radius: 10px;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.meter-title {
+
+}
+
+.meter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px;
+}

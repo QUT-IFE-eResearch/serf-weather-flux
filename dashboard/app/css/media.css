@@ -1,0 +1,42 @@
+@media screen and (max-width: 760px) {
+    .main-container{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column-reverse;
+        min-width: 375px;
+        height: 190vh;
+        overflow: scroll;
+    }
+    .main-item {
+        box-shadow: none;
+    }
+    .monitor-area {
+        flex: none;
+        margin: 2em;
+    }
+    .data-area {
+        flex: none;
+        margin: 2em;
+    }
+    .data-1, .data-2 {
+        box-shadow: none;
+    }
+    .main-nav a {
+        font-size: .6em;
+    }
+}
+
+/*TODO quick fix while fix IE bugs*/
+/*IE 6	IE 7	IE 8	IE 9	IE 10*/
+@media screen\0 {
+    .monitor-area{
+        display: none;
+    }
+    .data-area{
+        flex: 1;
+    }
+    .justIE{
+        display:flex !important;
+        flex:1;
+    }
+}

@@ -1,0 +1,47 @@
+.data-area{
+    background-color: #F2F1F1;
+    box-shadow: 1px 2px 5px 1px #AAAAAA;
+    border-radius: 10px 10px;
+    margin: 2em;
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    align-content: flex-end;
+    min-width: 17em;
+
+    align-items: center;
+    justify-content: space-between;
+}
+.data-1{
+    border-radius: 10px 10px 0 0;
+}
+.data-2{
+    border-radius: 0 0 10px 10px;
+    padding-bottom: 2em;
+}
+.subtitle {
+    margin-top: 0;
+}
+.data-panel {
+    padding: 1em;
+}
+.line {
+    border-bottom: 1px solid black;
+}
+dl dt {
+    width: 50%;
+    min-width: 50%;
+    float: left;
+    padding: 5px 0;
+    text-align: left;
+    height:1em;
+}
+dl dd {
+    width: 50%;
+    max-width: 50%;
+    margin: 0;
+    padding: 5px 0;
+    float: left;
+    text-align: right;
+    height:1em;
+}

@@ -1,0 +1,10 @@
+.wind-panel{
+    overflow: auto;
+    padding: 1em;
+    margin: 1em;
+    width: 600px;
+}
+.wind-gauge {
+    box-sizing: border-box;
+    height: 100%;
+}

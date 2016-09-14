@@ -17,3 +17,8 @@ Installed in `/scripts/fluxtower`
 Main script is run with crontab as sudo.
 
 It is running every day at 00:30 and every time a reboot happens.
+
+### TODOs
+
+- get monthly data
+- previous next 100 points
