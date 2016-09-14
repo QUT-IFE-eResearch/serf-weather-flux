@@ -1,3 +1,4 @@
+var Settings = require('Settings');
 
 var Weather = {
     getPragma: function(table){

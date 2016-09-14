@@ -11,12 +11,13 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
     entry: [
+        './settings.js',
         'whatwg-fetch',
         './app/index.js'
     ],
     output: {
         path: __dirname + '/dist',
-        filename: "index_bundle.js"
+        filename: "bundle.js"
     },
     module: {
         loaders: [
@@ -26,8 +27,7 @@ module.exports = {
             { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file"},
             { test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
-            { test: require.resolve('./settings'), loader: "expose?Settings" }
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
         ]
     },
     plugins: [
@@ -35,6 +35,11 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings: true
             }
         })
     ],
@@ -47,5 +52,10 @@ module.exports = {
             }),
             require('precss')
         ]
+    },
+    resolve: {
+        alias: {
+            'Settings':__dirname + '/settings.js'
+        }
     }
 };

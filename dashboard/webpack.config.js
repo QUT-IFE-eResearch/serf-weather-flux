@@ -12,13 +12,12 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     devtool: 'source-map',
     entry: [
-        './settings',
         'whatwg-fetch',
         './app/index.js'
     ],
     output: {
         path: __dirname + '/dist',
-        filename: "index_bundle.js"
+        filename: "bundle.js"
     },
     module: {
         loaders: [
@@ -28,17 +27,11 @@ module.exports = {
             { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file"},
             { test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000" },
             { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
-            { test: require.resolve('./settings-dev'), loader: "expose?Settings" }
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
         ]
     },
     plugins: [
-        HtmlWebpackPluginConfig,
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        })
+        HtmlWebpackPluginConfig
     ],
     postcss: function (webpack) {
         return [
@@ -49,5 +42,10 @@ module.exports = {
             }),
             require('precss')
         ]
+    },
+    resolve: {
+        alias: {
+            'Settings':__dirname + '/settings-dev.js'
+        }
     }
 };

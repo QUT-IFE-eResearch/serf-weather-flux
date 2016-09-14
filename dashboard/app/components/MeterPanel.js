@@ -36,9 +36,6 @@ var MeterPanel = React.createClass({
             })}
             </div>
         )
-    },
-    propTypes : {
-        isLoading: React.PropTypes.bool.isRequired
     }
 });
 
