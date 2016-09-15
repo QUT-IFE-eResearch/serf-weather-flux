@@ -11,7 +11,6 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
     entry: [
-        './settings.js',
         'whatwg-fetch',
         './app/index.js'
     ],
