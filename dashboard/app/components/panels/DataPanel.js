@@ -1,5 +1,5 @@
 var React = require('react');
-var Loading = require('./Loading');
+var Loading = require('../Loading');
 
 function isHL(hl) {
     if(hl===1){return 'High'}

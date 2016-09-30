@@ -2,13 +2,12 @@ var React = require('react');
 var TimerMixin = require('react-timer-mixin');
 
 var Weather = require('../utils/Weather');
-
 var MainContainer = require('./MainContainer');
-var Pragma = require('./Pragma');
-var DataPanel = require('./DataPanel');
-var MeterPanel = require('./MeterPanel');
-var WindGauge = require('./WindGauge');
-var LineChartWData = require('./LineChartWData');
+var DataPanel = require('./panels/DataPanel');
+var MeterPanel = require('./panels/MeterPanel');
+var WindGauge = require('./panels/WindGauge');
+var LineChartWData = require('./panels/LineChartWData');
+var DataView = require('./panels/DataView');
 var Loading = require('./Loading');
 
 function getSummary () {
@@ -22,7 +21,6 @@ function getSummary () {
                 wind: response.wind,
                 dateUpdated: response.dateUpdated
             };
-            this.selectMenu({target:{text:'WEATHER'},preventDefault:()=>{/*I'm lazy*/}});
             this.setState({
                 current: w.current,
                 highLow: w.highLow,
@@ -32,7 +30,6 @@ function getSummary () {
             });
         }.bind(this))
         .catch(function (err) {
-            this.selectMenu({target:{text:'WEATHER'},preventDefault:()=>{/*I'm lazy*/}});
             //TODO: add alert
             reject(err);
         }.bind(this));
@@ -42,7 +39,7 @@ var Home = React.createClass({
     mixins: [TimerMixin],
     getInitialState: function () {
       return {
-          selected: '',
+          selected: 'WEATHER',
           current: [],
           highLow: [],
           wind: {},
@@ -57,17 +54,17 @@ var Home = React.createClass({
             600000
         );
     },
-    selectMenu: function(e) {
-        e.preventDefault();
-        this.setState({
-            selected: e.target.text
-        });
-    },
     isActive: function (text) {
         return (text === this.state.selected) ? 'active' : 'default';
     },
     isPanelActive: function (text) {
         return 'panel-area ' + ((text === this.state.selected) ? 'show' : 'hide');
+    },
+    selectMenu: function (e) {
+        e.preventDefault();
+        this.setState({
+            selected: e.target.text
+        });
     },
     render: function () {
         return (
@@ -78,9 +75,9 @@ var Home = React.createClass({
                             <li><a href="#" className={this.isActive('WEATHER')} onClick={this.selectMenu}>WEATHER</a></li>
                             <li><a href="#" className={this.isActive('WIND')} onClick={this.selectMenu}>WIND</a></li>
                             <li><a href="#" className={this.isActive('CHARTS')} onClick={this.selectMenu}>CHARTS</a></li>
+                            <li><a href="#" className={this.isActive('RAIN')} onClick={this.selectMenu}>RAIN</a></li>
                         </ul>
                     </div>
-
                     <div className="monitor-area-item panel">
                         {this.state.isLoading === true
                         ? <Loading text='loading' speed={800}/>
@@ -96,17 +93,21 @@ var Home = React.createClass({
                         </div>
                         <div className={this.isPanelActive('CHARTS')}>
                             <div className="chart-panel">
-
                                 <LineChartWData
                                     table="CR3000_slow_met" column="Ta_HMP_01_Avg"
                                     title="Temperature" unit="°C" name="Temp"/>
                                 < LineChartWData
                                     table="CR3000_slow_met" column="ps_7500_Avg"
                                     title="Pressure" unit="kPa" name="Pressure"/>
-
                             </div>
                         </div>
-
+                        <div className={this.isPanelActive('RAIN')}>
+                            <div className="chart-panel rain">
+                                <LineChartWData
+                                    table="CR3000_slow_met" column="Rain_Tot"
+                                    title="Rain" unit="mm" name="Rain"/>
+                            </div>
+                        </div>
                     </div>
                     <div className="monitor-area-item footer">
                         <img src={require("./../images/qut-logo-50.jpg")} alt="QUT"/>

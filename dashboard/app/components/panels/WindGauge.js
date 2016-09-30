@@ -1,5 +1,5 @@
 var React = require('react');
-var Gauge = require('./Gauge');
+var Gauge = require('../Gauge');
 
 var WindGauge = React.createClass({
     getDefaultProps:function () {

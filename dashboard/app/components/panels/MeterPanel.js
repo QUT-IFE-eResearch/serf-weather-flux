@@ -1,6 +1,5 @@
 var React = require('react');
-var LinearGauge = require('./LinearGauge');
-
+var LinearGauge = require('../LinearGauge');
 
 var meterType = [
     {name:'temp',stop1:'#c00',stop2:'yellow',stop3:'#0c0'},

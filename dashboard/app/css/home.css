@@ -43,4 +43,5 @@
 
 .panel-area {
     overflow: auto;
+    min-height: 500px;
 }

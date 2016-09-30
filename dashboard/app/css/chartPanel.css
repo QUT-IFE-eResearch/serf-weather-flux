@@ -15,3 +15,8 @@
     overflow: auto;
     min-width: 1400px;
 }
+.rain {
+    justify-content: center;
+    flex-direction: column;
+    min-width: 100%;
+}

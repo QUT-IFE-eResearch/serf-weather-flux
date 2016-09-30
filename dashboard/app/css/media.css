@@ -22,7 +22,22 @@
         box-shadow: none;
     }
     .main-nav a {
+        font-size: .7em;
+        padding: 1.25rem 1rem;
+    }
+
+}
+
+@media screen and (max-width: 860px) {
+    .main-nav a {
         font-size: .6em;
+    }
+}
+
+@media screen and (max-width: 391px) {
+    .main-nav a {
+        font-size: .5em;
+        padding: 1.25rem 1rem;
     }
 }
 
