@@ -1,7 +1,12 @@
 #!/bin/bash
 # IMPORT SCRIPT
 
-cd /scripts/fluxtower
+DBDIR=/weather/scripts/serf-weather-db
+DROPBOX=/home/debian/Dropbox/OzFlux_Raw_Uploads/SERF
+APP=/weather/scripts/serf-weather-flux
+APPLOG=/weather/scripts/logs/serf-weather-flux.log
+
+cd $DBDIR
 
 sudo forever stopall
 
@@ -9,7 +14,7 @@ sudo forever stopall
 
 ################## CR3000_slow_core
 
-sudo cp /home/debian/Dropbox/OzFlux_Raw_Uploads/SERF/CR3000_slow_core.dat /scripts/fluxtower
+sudo cp ${DROPBOX}/CR3000_slow_core.dat ${DBDIR}
 
 sudo sed -i '1d' CR3000_slow_core.dat
 sudo sed -i '1d' CR3000_slow_core.dat
@@ -23,7 +28,7 @@ sudo sqlite3 ozflux_serf "CREATE TABLE CR3000_slow_core ('TIMESTAMP',RECORD INTE
 sudo echo -e ".mode csv\n.import CR3000_slow_core.dat CR3000_slow_core" | sudo sqlite3 ozflux_serf
 ################## CR3000_slow_flux
 
-sudo cp /home/debian/Dropbox/OzFlux_Raw_Uploads/SERF/CR3000_slow_flux.dat /scripts/fluxtower
+sudo cp ${DROPBOX}/CR3000_slow_flux.dat ${DBDIR}
 
 sudo sed -i '1d' CR3000_slow_flux.dat
 sudo sed -i '1d' CR3000_slow_flux.dat
@@ -38,7 +43,7 @@ echo -e ".mode csv\n.import CR3000_slow_flux.dat CR3000_slow_flux" | sudo sqlite
 
 ################## CR3000_slow_met
 
-sudo cp /home/debian/Dropbox/OzFlux_Raw_Uploads/SERF/CR3000_slow_met.dat /scripts/fluxtower
+sudo cp ${DROPBOX}/CR3000_slow_met.dat ${DBDIR}
 
 sudo sed -i '1d' CR3000_slow_met.dat
 sudo sed -i '1d' CR3000_slow_met.dat
@@ -53,7 +58,7 @@ echo -e ".mode csv\n.import CR3000_slow_met.dat CR3000_slow_met" | sudo sqlite3 
 
 ################## CR3000_slow_rad
 
-sudo cp /home/debian/Dropbox/OzFlux_Raw_Uploads/SERF/CR3000_slow_rad.dat /scripts/fluxtower
+sudo cp ${DROPBOX}/CR3000_slow_rad.dat ${DBDIR}
 
 sudo sed -i '1d' CR3000_slow_rad.dat
 sudo sed -i '1d' CR3000_slow_rad.dat
@@ -68,6 +73,6 @@ echo -e ".mode csv\n.import CR3000_slow_rad.dat CR3000_slow_rad" | sudo sqlite3 
 
 #################  START #######################################
 
-sudo rm /scripts/fluxtower/fluxtower.log
+sudo rm ${APPLOG}
 
-sudo forever -l /scripts/fluxtower/fluxtower.log start index.js
+sudo forever -l ${APPLOG} start ${APP}

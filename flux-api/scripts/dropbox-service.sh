@@ -9,7 +9,7 @@
 # Short-Description: dropbox service
 ### END INIT INFO
 
-DROPBOX_USERS="debian"
+DROPBOX_USERS="admin"
 
 DAEMON=.dropbox-dist/dropboxd
 
