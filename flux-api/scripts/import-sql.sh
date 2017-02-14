@@ -2,13 +2,18 @@
 # IMPORT SCRIPT
 
 DBDIR=/weather/scripts/serf-weather-db
-DROPBOX=/home/debian/Dropbox/OzFlux_Raw_Uploads/SERF
-APP=/weather/scripts/serf-weather-flux
+DROPBOX=/home/admin/Dropbox/OzFlux_Raw_Uploads/SERF
+APP=/weather/scripts/serf-weather-flux/flux-api/app/index.js
 APPLOG=/weather/scripts/logs/serf-weather-flux.log
+
+APPNAME=serfWeather
 
 cd $DBDIR
 
-sudo forever stopall
+sudo forever stop $APPNAME
+
+echo if there is an error starting it may be that it is already running with a different
+echo uid do forever stopall
 
 #################  DATA IMPORT #######################################
 
@@ -75,4 +80,5 @@ echo -e ".mode csv\n.import CR3000_slow_rad.dat CR3000_slow_rad" | sudo sqlite3 
 
 sudo rm ${APPLOG}
 
-sudo forever -l ${APPLOG} start ${APP}
+sudo forever -a -l ${APPLOG} start --uid "${APPNAME}" ${APP}
+echo starting forever -a -l ${APPLOG} start --uid "${APPNAME}" ${APP}
