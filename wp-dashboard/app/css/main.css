@@ -1,0 +1,52 @@
+@import 'variables.css';
+
+@import 'home.css';
+@import 'menu.css';
+@import 'dataPanel.css';
+@import 'meterPanel.css';
+@import 'chartPanel.css';
+@import 'windPanel.css';
+@import 'footer.css';
+
+@import 'media.css';
+
+html,
+body{
+    padding:0;
+    margin:0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+    color: #4479BD;
+    font-size: 23px;
+    border-bottom: 2px solid #4479BD;
+}
+.appear-enter {
+    transition-duration: .7s;
+    transition-property: opacity;
+    transition-timing-function: ease-out;
+    opacity: 0;
+}
+.appear-enter.appear-enter-active {
+    opacity: 1;
+}
+.appear-leave {
+    opacity: 0;
+}
+.dash-container{
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 1px 1px 5px #888888;
+}
+.dash-element{
+    background-color: white;
+}
+.app-header{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

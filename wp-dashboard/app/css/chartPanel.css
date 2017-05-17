@@ -1,0 +1,22 @@
+.data-chart {
+    background-color: white;
+    padding: 1em;
+    margin: 1em;
+    width: 600px;
+    overflow: auto;
+}
+.chart-panel {
+    flex: 1;
+    display: flex;
+    padding:1em;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    overflow: auto;
+    min-width: 1400px;
+}
+.rain {
+    justify-content: center;
+    flex-direction: column;
+    min-width: 100%;
+}

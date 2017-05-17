@@ -1,0 +1,12 @@
+
+.footer {
+    border-radius: 0 0 10px 10px;
+    height: 15vh;
+    display: flex;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+}
+.footer > img, .footer > div {
+    padding: 1em;
+}

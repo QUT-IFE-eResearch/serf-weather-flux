@@ -1,0 +1,52 @@
+
+.main-nav {
+    background: $mainColor;
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+    }
+    a {
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+        max-width: 140px;
+        font-weight: normal;
+        text-decoration: none;
+        display: flex;
+        align-items: flex-start;
+        letter-spacing: 3px;
+        color: $textColor;
+        &:hover, &:focus, &.active {
+            background: $backColor;
+            color: $textColorHover;
+        svg {
+            fill: green;
+        }
+        span {
+            color: black;
+        }
+        }
+    }
+    span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: $textColor2;
+        margin: 0.25rem 0 0 0;
+    }
+    .icon {
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin-right: 1rem;
+        fill: #999;
+    }
+    &.outlines {
+        * {
+            outline: 1px solid rgba(red, 0.5);
+        }
+    }
+}
