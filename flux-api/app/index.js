@@ -21,10 +21,9 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(allowCrossDomain);
-app.use('/app', express.static(settings.static));
+app.use('/', express.static(settings.static));
 
 app.get('/', (req, res) => {
-    res.redirect('/app');
 });
 
 app.get('/flux/:table/:opts', (req, res) => {

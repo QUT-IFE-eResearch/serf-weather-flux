@@ -1,5 +1,5 @@
 module.exports = {
-    url: 'http://weather.serf.net.au',
+    url: '//weather.serf.net.au',
     flux: 'flux',
     flux2: 'flux2',
     pragma: 'pragma',
