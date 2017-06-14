@@ -14,6 +14,9 @@
 
 `sudo ln -s /etc/letsencrypt/live/weather.serf.net.au/privkey.pem /etc/nginx/conf.d/weather.serf.net.au.key`
 
+#### crontab
+
+`0 0 1 Jan,Apr,Jul,Oct * /home/admin/certbot/certbot-auto renew`
 
 #### Nginx
 
