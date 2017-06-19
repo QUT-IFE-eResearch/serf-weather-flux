@@ -1,11 +1,23 @@
-# flux tower application for SERF
+# flux tower ReST API/App for SERF
 
 [node.js api](./flux-api)
 
 [react dashboard](./dashboard)
 
+## Global Installations
 
-### Certififate
+- Dependencies
+
+- Install Node.JS, NPM
+    - What are the node.js deps
+    - forever -g
+    
+- Install Headless Dropbox
+
+- Install Crontab as user
+(depends on node.js installation)
+
+### Certificate
 
 
 './certbot-auto certonly --webroot -w /weather/scripts/serf-weather-flux/dashboard/dist/ -d weather.serf.net.au'
